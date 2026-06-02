@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Comando | SB Intelligence</title>
+    
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    
+    <script src="../../assets/js/dashboard-admin.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-main">SB Intelligence System</span>
+                <span class="logo-subtitle">Portal do Gestor</span>
+            </div>
+            <nav>
+                <a href="dashboard-admin.html" class="nav-link active">Centro de Comando</a>
+                <a href="editais-sugeridos.html" class="nav-link">Radar do Robô (SAD)</a>
+                <a href="pipeline-crm.html" class="nav-link">Pipeline CRM</a>
+                <a href="financeiro.html" class="nav-link">Financeiro</a>
+                <a href="clientes-ged.html" class="nav-link">Clientes e GED</a>
+            </nav>
+        </aside>
+
+        <main class="main-wrapper">
+            <header class="top-header">
+                <div class="header-left">
+                    <h2>Centro de Comando Operacional</h2>
+                </div>
+                <div class="header-right">
+                    <div class="notification-container" onclick="toggleNotif()">
+                        <div class="notification-bell has-notification">🔔</div>
+                        <div class="notif-menu" id="notifMenu">
+                            <div class="notif-item"><strong>Nova Licitação:</strong> Pregão 112 encontrado!</div>
+                            <div class="notif-item"><strong>GED:</strong> Alvará vence em 4 dias.</div>
+                            <div class="notif-item"><strong>Financeiro:</strong> Pagamento aprovado.</div>
+                        </div>
+                    </div>
+                    <div class="user-profile"><span>Olá, Leila</span><div class="avatar">L</div></div>
+                </div>
+            </header>
+
+            <section class="container">
+                
+                <div class="card accent-dourado" style="background: linear-gradient(to right, #ffffff, #F8FAFC);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <div>
+                            <h2 id="greetingTitle" style="color: var(--azul-principal); font-size: 22px; margin-bottom: 4px;">Olá, Gestão SB!</h2>
+                            <p class="text-detail" style="font-size: 14px;">Você tem <strong>3 pregões ao vivo</strong> hoje e <strong>12 oportunidades</strong> aguardando análise da inteligência (SAD).</p>
+                        </div>
+                        <div class="crm-filter-group">
+                            <button class="btn-table" onclick="location.href='clientes-ged.html'">+ Novo Cliente</button>
+                            <button class="btn-novo" onclick="location.href='pipeline-crm.html'">Ir para Sala de Disputa 🔴</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="card accent-verde">
+                        <h3 class="card-title">Taxa de Sucesso (Win Rate)</h3>
+                        <div style="display: flex; align-items: baseline; gap: 10px;">
+                            <h2>68.5%</h2>
+                            <span class="badge sucesso">▲ 4%</span>
+                        </div>
+                        <p class="text-detail">Licitações ganhas no trimestre</p>
+                    </div>
+                    
+                    <div class="card accent-azul">
+                        <h3 class="card-title">Faturamento Mês (Projetado)</h3>
+                        <div style="display: flex; align-items: baseline; gap: 10px;">
+                            <h2>R$ 81.650</h2>
+                            <span class="badge" style="background:#E3F2FD; color:var(--azul-principal);">Meta: 90k</span>
+                        </div>
+                        <p class="text-detail">Mensalidades + Comissões</p>
+                    </div>
+                    
+                    <div class="card accent-dourado">
+                        <h3 class="card-title">Volume no Pipeline (SAD)</h3>
+                        <div style="display: flex; align-items: baseline; gap: 10px;">
+                            <h2 style="color: var(--dourado);">R$ 4.25 M</h2>
+                        </div>
+                        <p class="text-detail">Soma de todos os editais ativos</p>
+                    </div>
+                    
+                    <div class="card accent-vermelho">
+                        <h3 class="card-title">Riscos Operacionais</h3>
+                        <div style="display: flex; align-items: baseline; gap: 10px;">
+                            <h2 style="color: var(--erro);">7</h2>
+                            <span class="badge erro">Ação Exigida</span>
+                        </div>
+                        <p class="text-detail">5 GEDs Vencendo | 2 Inadimplentes</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    
+                    <div class="card accent-azul">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3 class="card-title" style="margin: 0;">Mapeamento do Funil de Vendas (Volume em R$)</h3>
+                            <select class="select-filter">
+                                <option>Mês Atual</option>
+                                <option>Trimestre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="funnel-container">
+                            <div class="funnel-stage">
+                                <div class="funnel-label">Captação (Robô)</div>
+                                <div class="funnel-bar-wrapper">
+                                    <div class="funnel-bar" style="width: 100%; background-color: var(--texto-secundario);">R$ 4.250.000</div>
+                                </div>
+                            </div>
+                            
+                            <div class="funnel-stage">
+                                <div class="funnel-label">Análise Inteligente (SAD)</div>
+                                <div class="funnel-bar-wrapper">
+                                    <div class="funnel-bar" style="width: 75%; background-color: var(--azul-principal);">R$ 3.180.000</div>
+                                </div>
+                            </div>
+                            
+                            <div class="funnel-stage">
+                                <div class="funnel-label">Validação (GED)</div>
+                                <div class="funnel-bar-wrapper">
+                                    <div class="funnel-bar" style="width: 60%; background-color: var(--alerta);">R$ 2.550.000</div>
+                                </div>
+                            </div>
+                            
+                            <div class="funnel-stage">
+                                <div class="funnel-label">Em Disputa (Ao Vivo)</div>
+                                <div class="funnel-bar-wrapper">
+                                    <div class="funnel-bar" style="width: 35%; background-color: var(--dourado);">R$ 1.100.000</div>
+                                </div>
+                            </div>
+                            
+                            <div class="funnel-stage">
+                                <div class="funnel-label" style="color: var(--sucesso);">Vitórias Homologadas</div>
+                                <div class="funnel-bar-wrapper">
+                                    <div class="funnel-bar" style="width: 20%; background-color: var(--sucesso);">R$ 680.000</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-detail" style="margin-top: 20px; text-align: center;">
+                            *O afunilamento demonstra a eficiência do <strong>Algoritmo SAD</strong>, que descarta edital de alto risco antes da etapa de GED.
+                        </p>
+                    </div>
+
+                    <div class="card accent-laranja">
+                        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--borda); padding-bottom: 12px;">
+                            <h3 class="card-title" style="margin: 0; color: var(--alerta);">Radar de Urgências</h3>
+                            <span class="badge alerta">Ao Vivo</span>
+                        </div>
+
+                        <div class="urgency-list">
+                            <div class="urgency-item critical">
+                                <div class="urgency-content">
+                                    <h4 style="color: var(--erro);">🔴 Pregão 112/2026 Iniciando!</h4>
+                                    <p>Sala de disputa aberta para FarmaSul. Assumir operação manual IMEDIATAMENTE.</p>
+                                </div>
+                                <span class="urgency-time">Agora</span>
+                            </div>
+
+                            <div class="urgency-item action">
+                                <div class="urgency-content">
+                                    <h4>🧠 Preços SAD aguardam revisão</h4>
+                                    <p>Robô processou 12 editais. Acesse o Pipeline para homologar as margens.</p>
+                                </div>
+                                <span class="urgency-time">Há 2h</span>
+                            </div>
+
+                            <div class="urgency-item warning">
+                                <div class="urgency-content">
+                                    <h4 style="color: var(--alerta);">⚠️ Risco de Compliance (GED)</h4>
+                                    <p>Certidão Negativa da <strong>TechMed Soluções</strong> vence em 2 dias.</p>
+                                </div>
+                                <span class="urgency-time">Hoje</span>
+                            </div>
+
+                            <div class="urgency-item critical">
+                                <div class="urgency-content">
+                                    <h4>🚫 Suspensão via BillingService</h4>
+                                    <p>HospFarm bloqueado automaticamente por inadimplência.</p>
+                                </div>
+                                <span class="urgency-time">Ontem</span>
+                            </div>
+                        </div>
+
+                        <button class="btn-table" style="width: 100%; margin-top: 15px; text-align: center;">Limpar Alertas Lidos</button>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+</body>
+</html>
