@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Editais | SB Intelligence</title>
+    
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    
+    <script src="../../assets/js/meus-editais.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-main">SB Intelligence System</span>
+                <span class="logo-subtitle">Portal do Cliente</span>
+            </div>
+            <nav>
+                <a href="dashboard-cliente.html" class="nav-link">Visão Geral</a>
+                <a href="meus-editais.html" class="nav-link active">Meus Editais (Match)</a>
+                <a href="ged-cliente.html" class="nav-link">Central de Documentos (GED)</a>
+                <a href="faturas-comissoes.html" class="nav-link">Faturas e Comissões</a>
+                <a href="falar-consultor.html" class="nav-link">Falar com Consultor</a>
+            </nav>
+        </aside>
+
+        <main class="main-wrapper">
+            <header class="top-header">
+                <div class="header-left">
+                    <h2>Oportunidades e Auditoria Preditiva</h2>
+                </div>
+                <div class="header-right" style="display: flex; align-items: center;">
+                    <div class="notification-container" onclick="toggleNotif()">
+                        <div class="notification-bell has-notification">🔔</div>
+                        <div class="notif-menu" id="notifMenu">
+                            <div class="notif-item"><strong>Nova Licitação:</strong> Pregão 112 encontrado!</div>
+                            <div class="notif-item"><strong>GED:</strong> Alvará vence em 4 dias.</div>
+                            <div class="notif-item"><strong>Financeiro:</strong> Pagamento aprovado.</div>
+                        </div>
+                    </div>
+                    <div class="user-profile">
+                        <div style="text-align: right; line-height: 1.2;">
+                            <span style="display: block; font-weight: 700; color: var(--azul-principal);">MedSupply Brasil</span>
+                            <span style="font-size: 11px; color: var(--texto-secundario);">Plano Standard</span>
+                        </div>
+                        <div class="avatar" style="background-color: var(--azul-principal);">M</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="container">
+                
+                <div class="card accent-dourado">
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <div>
+                            <h3 class="card-title" style="margin-bottom: 4px;">Meu Radar de Licitações</h3>
+                            <p class="text-detail">Acompanhe os editais capturados pelo Web Scraper e analise as chances de vitória calculadas pela inteligência preditiva (SAD).</p>
+                        </div>
+                        <div class="crm-filter-group">
+                            <input type="text" class="search-bar" id="searchEditais" placeholder="Buscar por órgão, objeto ou edital..." style="width: 260px;">
+                            <select class="select-filter" id="filterMatch">
+                                <option value="">Todas as Probabilidades</option>
+                                <option value="Alta">Alta (> 70%)</option>
+                                <option value="Média">Média (40% - 70%)</option>
+                                <option value="Baixa">Baixa (< 40%)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="card accent-azul">
+                        <h3 class="card-title">Novos Matches</h3>
+                        <h2>4 Editais</h2>
+                        <p class="text-detail" style="color: var(--azul-principal); font-weight: 600;">Aguardando sua autorização</p>
+                    </div>
+                    <div class="card accent-verde">
+                        <h3 class="card-title">Chances de Sucesso Alta</h3>
+                        <h2>2 Oportunidades</h2>
+                        <p class="text-detail" style="color: var(--sucesso); font-weight: 600;">Win Rate acima de 75%</p>
+                    </div>
+                    <div class="card accent-dourado">
+                        <h3 class="card-title">Valor em Análise</h3>
+                        <h2>R$ 1.250.000</h2>
+                        <p class="text-detail">Volume sob triagem estatística</p>
+                    </div>
+                    <div class="card accent-verde">
+                        <h3 class="card-title">Vitórias Acumuladas</h3>
+                        <h2 style="color: var(--sucesso);">18 Atas</h2>
+                        <p class="text-detail">Contratos ativos faturados</p>
+                    </div>
+                </div>
+
+                <div class="card accent-azul">
+                    <table class="table-base">
+                        <thead>
+                            <tr>
+                                <th>Órgão / Edital</th>
+                                <th>Objeto Licitado</th>
+                                <th>Valor Estimado</th>
+                                <th style="width: 260px;">Probabilidade de Vitória (SAD)</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="editaisTableBody">
+                            
+                            <tr data-id="ED-098" data-org="Prefeitura de Manaus" data-objeto="Aquisição de Insumos Descartáveis Hospitalares" data-abertura="10/06/2026 às 09:00" data-portal="Portal Comprasnet" data-match="Alta" data-status="Novo Match" data-valor="R$ 320.000,00" data-prob="92%" data-reason="Poucos concorrentes homologados na região Norte.">
+                                <td><strong>Pref. de Manaus</strong><br><span class="text-detail">Pregão 098/2026</span></td>
+                                <td>Material Hospitalar</td>
+                                <td style="font-weight: 600;">R$ 320.000,00</td>
+                                <td>
+                                    <div class="win-rate-container">
+                                        <div class="progress-bar-bg"><div class="progress-bar-fill rate-high" style="width: 92%;"></div></div>
+                                        <span class="rate-text" style="color: var(--sucesso);">92%</span>
+                                    </div>
+                                    <span class="ai-badge">🧠 Histórico Regional Favorável</span>
+                                </td>
+                                <td><span class="badge" style="background: #E3F2FD; color: var(--azul-principal);">Novo Match</span></td>
+                                <td><button class="btn-novo" style="padding: 6px 12px; font-size: 12px;" onclick="openClientModal(this)">Ver e Autorizar</button></td>
+                            </tr>
+
+                            <tr data-id="ED-042" data-org="Secretaria de Estado da Saúde - SP" data-objeto="Kits de Monitoramento Glicêmico" data-abertura="02/06/2026 às 14:00" data-portal="Licitações-E (BB)" data-match="Alta" data-status="Autorizado" data-valor="R$ 450.000,00" data-prob="78%" data-reason="MedSupply possui as melhores certidões para este lote.">
+                                <td><strong>SES - SP</strong><br><span class="text-detail">Pregão 042/2026</span></td>
+                                <td>Kit Diabetes</td>
+                                <td style="font-weight: 600;">R$ 450.000,00</td>
+                                <td>
+                                    <div class="win-rate-container">
+                                        <div class="progress-bar-bg"><div class="progress-bar-fill rate-high" style="width: 78%;"></div></div>
+                                        <span class="rate-text" style="color: var(--sucesso);">78%</span>
+                                    </div>
+                                    <span class="ai-badge">🧠 Score de Documentos: Máximo</span>
+                                </td>
+                                <td><span class="badge ok" style="background: #FFF3E0; color: var(--alerta);">Análise SB (SAD)</span></td>
+                                <td><button class="btn-table" onclick="openClientModal(this)">Ver Detalhes</button></td>
+                            </tr>
+
+                            <tr data-id="ED-112" data-org="Prefeitura de Curitiba" data-objeto="Aquisição de Amoxicilina + Clavulanato" data-abertura="Hoje às 14:00" data-portal="Portal de Compras Públicas" data-match="Média" data-status="Em Disputa" data-valor="R$ 1.100.000,00" data-prob="54%" data-reason="Forte concorrência do distribuidor X mapeada.">
+                                <td><strong>Pref. Curitiba</strong><br><span class="text-detail">Pregão 112/2026</span></td>
+                                <td>Amoxicilina</td>
+                                <td style="font-weight: 600;">R$ 1.100.000,00</td>
+                                <td>
+                                    <div class="win-rate-container">
+                                        <div class="progress-bar-bg"><div class="progress-bar-fill rate-medium" style="width: 54%;"></div></div>
+                                        <span class="rate-text" style="color: var(--alerta);">54%</span>
+                                    </div>
+                                    <span class="ai-badge" style="background-color: #FFF3E0; color: var(--alerta);">⚠️ Margem de Lance Estreita</span>
+                                </td>
+                                <td><span class="badge" style="background: #FFF8E1; color: var(--dourado);">🔴 Em Disputa</span></td>
+                                <td><button class="btn-table" style="color: var(--dourado); border-color: var(--dourado);" onclick="openClientModal(this)">Acompanhar SB</button></td>
+                            </tr>
+
+                            <tr data-id="ED-201" data-org="Hospital das Clínicas" data-objeto="Fornecimento de Fios Cirúrgicos Agulhados" data-abertura="08/06/2026" data-portal="Portal BEC" data-match="Baixa" data-status="Bloqueado" data-valor="R$ 180.000,00" data-prob="14%" data-reason="Certidão do TRT consta como vencida no GED do portal.">
+                                <td><strong>Hosp. Clínicas</strong><br><span class="text-detail">Pregão 201/2026</span></td>
+                                <td>Fios Cirúrgicos</td>
+                                <td style="font-weight: 600;">R$ 180.000,00</td>
+                                <td>
+                                    <div class="win-rate-container">
+                                        <div class="progress-bar-bg"><div class="progress-bar-fill rate-low" style="width: 14%;"></div></div>
+                                        <span class="rate-text" style="color: var(--erro);">14%</span>
+                                    </div>
+                                    <span class="ai-badge" style="background-color: #FFEBEE; color: var(--erro);">🚫 Restrição de Compliance</span>
+                                </td>
+                                <td><span class="badge erro" style="margin-top: 4px;">Bloqueado por GED</span></td>
+                                <td><button class="btn-table" style="color: var(--erro); border-color: #FFCDD2;" onclick="location.href='ged-cliente.html'">Regularizar GED</button></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <div id="clientModal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div>
+                    <span id="mId" class="badge" style="background:#ECEFF1; color:#37474F; margin-bottom: 6px;">ID</span>
+                    <h2 id="mTitle" style="font-size: 18px; color: var(--azul-principal);">Resumo da Oportunidade</h2>
+                </div>
+                <button class="modal-close-btn" onclick="document.getElementById('clientModal').classList.remove('active')">✕</button>
+            </div>
+            
+            <div>
+                <span class="modal-section-title">Dados Estruturados pelo Robô SB</span>
+                <table class="modal-summary-table">
+                    <tr><td class="label">Órgão Licitante</td><td id="mOrg">...</td></tr>
+                    <tr><td class="label">Portal / Plataforma</td><td id="mPortal">...</td></tr>
+                    <tr><td class="label">Objeto Licitado</td><td id="mObjeto">...</td></tr>
+                    <tr><td class="label">Data de Disputa</td><td id="mAbertura" style="font-weight: 600;">...</td></tr>
+                    <tr><td class="label">Valor Estimado</td><td id="mValue" style="font-weight: 700; color: var(--dourado);">R$ 0,00</td></tr>
+                </table>
+            </div>
+
+            <div style="background-color: #E3F2FD; padding: 14px; border-radius: 6px; border-left: 4px solid var(--azul-principal);">
+                <span class="modal-section-title" style="color: var(--azul-principal); font-weight: 700;">Auditoria Estatística (Módulo SAD)</span>
+                <div style="display: flex; justify-content: space-between; margin: 8px 0; font-size: 14px;">
+                    <span><strong>Probabilidade de Vitória:</strong> <span id="mModalProb" style="color:var(--sucesso); font-weight:bold;">0%</span></span>
+                </div>
+                <p id="mModalReason" style="font-size: 12px; color: var(--texto-escuro); line-height: 1.4; border-top: 1px dashed var(--borda); padding-top: 6px; margin-top: 4px;">
+                    Análise preditiva...
+                </p>
+            </div>
+
+            <div class="modal-actions-row" id="modalActions">
+                </div>
+        </div>
+    </div>
+</body>
+</html>
