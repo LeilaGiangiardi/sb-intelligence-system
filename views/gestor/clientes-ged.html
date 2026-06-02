@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes e GED | SB Intelligence</title>
+    
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    
+    <script src="../../assets/js/clientes.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-main">SB Intelligence System</span>
+                <span class="logo-subtitle">Portal do Gestor</span>
+            </div>
+            <nav>
+                <a href="dashboard-admin.html" class="nav-link">Centro de Comando</a>
+                <a href="editais-sugeridos.html" class="nav-link">Radar do Robô (SAD)</a>
+                <a href="pipeline-crm.html" class="nav-link">Pipeline CRM</a>
+                <a href="financeiro.html" class="nav-link">Financeiro</a>
+                <a href="clientes-ged.html" class="nav-link active">Clientes e GED</a>
+            </nav>
+        </aside>
+
+        <main class="main-wrapper">
+            <header class="top-header">
+                <div class="header-left">
+                    <h2>Gerenciamento Estratégico de Clientes</h2>
+                </div>
+                <div class="header-right" style="display: flex; align-items: center;">
+                    <div class="notification-container" onclick="toggleNotif()">
+                        <div class="notification-bell has-notification">🔔</div>
+                        <div class="notif-menu" id="notifMenu">
+                            <div class="notif-item"><strong>Aviso:</strong> Certidão de TechMed Soluções vence em 2 dias.</div>
+                            <div class="notif-item"><strong>Ação:</strong> HospFarm bloqueado por inadimplência.</div>
+                        </div>
+                    </div>
+                    <div class="user-profile">
+                        <span>Olá, Leila</span>
+                        <div class="avatar">L</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="container">
+                
+                <div class="card accent-azul">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h3 class="card-title">Controle de Portfólio (B2B)</h3>
+                            <p class="text-detail">Painel corporativo integrado para auditoria de conformidade documental e monitoramento de pregões síncronos.</p>
+                        </div>
+                        <button class="btn-novo">+ Cadastrar Novo Cliente</button>
+                    </div>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="card accent-azul">
+                        <h3 class="card-title">Total de Clientes Ativos</h3>
+                        <h2>42 Empresas</h2>
+                        <p class="text-detail">Base total sob contrato recorrente</p>
+                    </div>
+                    
+                    <div class="card accent-verde">
+                        <h3 class="card-title">Documentação Regular</h3>
+                        <h2>35 Clientes</h2>
+                        <p style="color: var(--sucesso); font-size: 12px; font-weight: 600;">✅ Aptos para disputa</p>
+                    </div>
+                    
+                    <div class="card accent-laranja">
+                        <h3 class="card-title">Avisos Automáticos (GED)</h3>
+                        <h2>5 Clientes</h2>
+                        <p style="color: var(--alerta); font-size: 12px; font-weight: 600;">⚠️ Notificados pelo sistema (&lt; 5 dias)</p>
+                    </div>
+                    
+                    <div class="card accent-vermelho">
+                        <h3 class="card-title">Inaptos / Pendentes</h3>
+                        <h2>2 Clientes</h2>
+                        <p style="color: var(--erro); font-size: 12px; font-weight: 600;">🚫 Restrição documental ativa</p>
+                    </div>
+                </div>
+
+                <div class="card accent-dourado">
+                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0 20px 0; border-bottom: 1px solid var(--borda);">
+                        <h3 class="card-title" style="margin-bottom: 0;">Filtros de Segmentação</h3>
+                        
+                        <div class="crm-filter-group">
+                            <input type="text" class="search-bar" id="searchClient" placeholder="Filtrar por nome ou CNPJ..." style="width: 250px;">
+                            <select class="select-filter" id="filterPlan">
+                                <option value="">Todos os Planos</option>
+                                <option value="Premium">Premium</option>
+                                <option value="Standard">Standard</option>
+                                <option value="Básico">Básico</option>
+                            </select>
+                            <select class="select-filter" id="filterStatus">
+                                <option value="">Todos os Status GED</option>
+                                <option value="Regular">Regular</option>
+                                <option value="Pendente">Pendente</option>
+                                <option value="Vencido">Vencido</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <table class="table-base">
+                        <thead>
+                            <tr>
+                                <th>Razão Social / Empresa</th>
+                                <th>CNPJ</th>
+                                <th>Plano Ativo</th>
+                                <th>Status do GED</th>
+                                <th>Disputa em Tempo Real</th>
+                                <th>Auditoria e Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientTableBody">
+                            <tr>
+                                <td><strong>Dist. Saúde X Ltda</strong></td>
+                                <td>12.345.678/0001-90</td>
+                                <td>Premium</td>
+                                <td><span class="badge erro">Pendente</span></td>
+                                <td><span class="badge alerta" style="background-color: #f5f5f5; color: #666;">Não</span></td>
+                                <td class="btn-action-group">
+                                    <button class="btn-table" onclick="alert('Funcionalidade de abrir o GED do cliente em desenvolvimento para o Back-end.')">Ver Pasta</button>
+                                    <button class="btn-table">Ver Perfil</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>MedSupply Brasil</strong></td>
+                                <td>98.765.432/0001-10</td>
+                                <td>Standard</td>
+                                <td><span class="badge ok">Regular</span></td>
+                                <td><span class="badge ok">Sim (Pregão 042)</span></td>
+                                <td class="btn-action-group">
+                                    <button class="btn-table" onclick="alert('Funcionalidade de abrir o GED do cliente em desenvolvimento para o Back-end.')">Ver Pasta</button>
+                                    <button class="btn-table">Ver Perfil</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>TechMed Soluções</strong></td>
+                                <td>22.555.888/0001-01</td>
+                                <td>Premium</td>
+                                <td><span class="badge erro">Balanço Vencido</span></td>
+                                <td><span class="badge alerta" style="background-color: #f5f5f5; color: #666;">Não</span></td>
+                                <td class="btn-action-group">
+                                    <button class="btn-table" onclick="alert('Funcionalidade de abrir o GED do cliente em desenvolvimento para o Back-end.')">Ver Pasta</button>
+                                    <button class="btn-table">Ver Perfil</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Distribuidora Norte</strong></td>
+                                <td>77.888.999/0001-22</td>
+                                <td>Standard</td>
+                                <td><span class="badge ok">Regular</span></td>
+                                <td><span class="badge ok">Sim (Pregão 089)</span></td>
+                                <td class="btn-action-group">
+                                    <button class="btn-table" onclick="alert('Funcionalidade de abrir o GED do cliente em desenvolvimento para o Back-end.')">Ver Pasta</button>
+                                    <button class="btn-table">Ver Perfil</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hospitalar & Cia</strong></td>
+                                <td>33.444.555/0001-99</td>
+                                <td>Básico</td>
+                                <td><span class="badge ok">Regular</span></td>
+                                <td><span class="badge alerta" style="background-color: #f5f5f5; color: #666;">Não</span></td>
+                                <td class="btn-action-group">
+                                    <button class="btn-table" onclick="alert('Funcionalidade de abrir o GED do cliente em desenvolvimento para o Back-end.')">Ver Pasta</button>
+                                    <button class="btn-table">Ver Perfil</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+        </main>
+    </div>
+</body>
+</html>
