@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Documentos | SB Intelligence</title>
+    
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    
+    <script src="../../assets/js/ged-cliente.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-main">SB Intelligence System</span>
+                <span class="logo-subtitle">Portal do Cliente</span>
+            </div>
+            <nav>
+                <a href="dashboard-cliente.html" class="nav-link">Visão Geral</a>
+                <a href="meus-editais.html" class="nav-link">Meus Editais (Match)</a>
+                <a href="ged-cliente.html" class="nav-link active">Central de Documentos (GED)</a>
+                <a href="faturas-comissoes.html" class="nav-link">Faturas e Comissões</a>
+                <a href="falar-consultor.html" class="nav-link">Falar com Consultor</a>
+            </nav>
+        </aside>
+
+        <main class="main-wrapper">
+            <header class="top-header">
+                <div class="header-left">
+                    <h2>Cofre de Documentos e Assinaturas</h2>
+                </div>
+                <div class="header-right" style="display: flex; align-items: center;">
+                    <div class="notification-container" onclick="toggleNotif()">
+                        <div class="notification-bell has-notification">🔔</div>
+                        <div class="notif-menu" id="notifMenu">
+                            <div class="notif-item"><strong>Nova Licitação:</strong> Pregão 112 encontrado!</div>
+                            <div class="notif-item"><strong>GED:</strong> Alvará vence em 4 dias.</div>
+                            <div class="notif-item"><strong>Financeiro:</strong> Pagamento aprovado.</div>
+                        </div>
+                    </div>
+                    <div class="user-profile">
+                        <div style="text-align: right; line-height: 1.2;">
+                            <span style="display: block; font-weight: 700; color: var(--azul-principal);">MedSupply Brasil</span>
+                            <span style="font-size: 11px; color: var(--texto-secundario);">Plano Standard</span>
+                        </div>
+                        <div class="avatar" style="background-color: var(--azul-principal);">M</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="container">
+                
+                <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 24px;">
+                    <div class="card accent-azul">
+                        <h3 class="card-title" style="margin-bottom: 15px;">Enviar Novo Documento</h3>
+                        <div class="upload-zone" onclick="triggerUpload()">
+                            <div class="upload-icon">📄</div>
+                            <div class="upload-text">Clique ou arraste seus arquivos aqui (PDF)</div>
+                            <span class="text-detail">Tamanho máximo: 10MB</span>
+                        </div>
+                    </div>
+
+                    <div class="kpi-grid" style="margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; width: 100%;">
+                        <div class="card accent-verde">
+                            <h3 class="card-title">Documentos Validados</h3>
+                            <h2>18 Docs</h2>
+                            <p class="text-detail" style="color: var(--sucesso); font-weight: 600;">✅ Em conformidade</p>
+                        </div>
+                        <div class="card accent-laranja">
+                            <h3 class="card-title">Pendentes de Assinatura</h3>
+                            <h2>2 Docs</h2>
+                            <p class="text-detail" style="color: var(--alerta); font-weight: 600;">Enviados pela SB Intelligence</p>
+                        </div>
+                        <div class="card accent-vermelho">
+                            <h3 class="card-title">Inconsistentes / Vencidos</h3>
+                            <h2>1 Doc</h2>
+                            <p class="text-detail" style="color: var(--erro); font-weight: 600;">Requer envio de atualização</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card accent-dourado">
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--borda); padding-bottom: 12px; margin-bottom: 15px;">
+                        <div>
+                            <h3 class="card-title" style="margin: 0;">Repositório Digital e Auditoria</h3>
+                            <p class="text-detail">Gerencie as certidões e assine os documentos jurídicos necessários para as licitações.</p>
+                        </div>
+                        <div class="crm-filter-group">
+                            <input type="text" class="search-bar" id="searchDocs" placeholder="Buscar documento..." style="width: 250px;">
+                            <select class="select-filter" id="filterStatus">
+                                <option value="">Todos os Status</option>
+                                <option value="Vigente">Vigente</option>
+                                <option value="Pendente Assinatura">Pendente Assinatura</option>
+                                <option value="Vencido">Vencido</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <table class="table-base">
+                        <thead>
+                            <tr>
+                                <th>Nome do Documento</th>
+                                <th>Origem</th>
+                                <th>Data de Validade</th>
+                                <th>Status</th>
+                                <th>Ações Disponíveis</th>
+                            </tr>
+                        </thead>
+                        <tbody id="docsTableBody">
+                            
+                            <tr>
+                                <td colspan="5" class="doc-category">Documentos Jurídicos e Contratos (SB Intelligence)</td>
+                            </tr>
+                            
+                            <tr data-status="Pendente Assinatura">
+                                <td>
+                                    <strong>Termo de Autorização de Lances (Pregão 112)</strong><br>
+                                    <span class="text-detail">PDF • 120 KB</span>
+                                </td>
+                                <td><span class="badge" style="background:#E3F2FD; color:var(--azul-principal);">Consultoria SB</span></td>
+                                <td>-</td>
+                                <td><span class="badge alerta">Aguardando sua Assinatura</span></td>
+                                <td class="btn-action-group">
+                                    <button class="btn-novo" style="background: var(--sucesso); padding: 6px 12px; font-size: 12px;" onclick="assinarDocumento(this)">Assinar Digitalmente ✍️</button>
+                                    <button class="btn-table" onclick="alert('Baixando PDF para leitura...')">Visualizar</button>
+                                </td>
+                            </tr>
+
+                            <tr data-status="Vigente">
+                                <td>
+                                    <strong>Contrato Principal de Prestação de Serviços</strong><br>
+                                    <span class="text-detail">PDF • 2.4 MB</span>
+                                </td>
+                                <td><span class="badge" style="background:#E3F2FD; color:var(--azul-principal);">Consultoria SB</span></td>
+                                <td>Indeterminado</td>
+                                <td><span class="badge ok">Assinado Legalmente</span></td>
+                                <td class="btn-action-group">
+                                    <button class="btn-table" onclick="alert('Abrindo documento...')">Visualizar</button>
+                                    <button class="btn-table" onclick="alert('Download iniciado...')">Baixar</button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="5" class="doc-category">Habilitação Jurídica e Regularidade Fiscal (MedSupply)</td>
+                            </tr>
+
+                            <tr data-status="Vencido">
+                                <td>
+                                    <strong>Certidão Negativa de Débitos Trabalhistas (TRT)</strong><br>
+                                    <span class="text-detail">Falta de envio atualizado</span>
+                                </td>
+                                <td><span class="badge" style="background:#F1F5F9; color:var(--texto-escuro);">Minha Empresa</span></td>
+                                <td style="color: var(--erro); font-weight: bold;">01/05/2026</td>
+                                <td><span class="badge erro">Vencido / Bloqueado</span></td>
+                                <td class="btn-action-group">
+                                    <button class="btn-novo" style="padding: 6px 12px; font-size: 12px;" onclick="triggerUpload()">Fazer Upload</button>
+                                </td>
+                            </tr>
+
+                            <tr data-status="Vigente">
+                                <td>
+                                    <strong>Alvará de Funcionamento (Vigilância Sanitária)</strong><br>
+                                    <span class="text-detail">PDF • 850 KB</span>
+                                </td>
+                                <td><span class="badge" style="background:#F1F5F9; color:var(--texto-escuro);">Minha Empresa</span></td>
+                                <td style="color: var(--alerta); font-weight: bold;">28/05/2026</td>
+                                <td><span class="badge alerta" style="background-color: #FFF3E0; color: var(--alerta);">Vence em 4 dias</span></td>
+                                <td class="btn-action-group">
+                                    <button class="btn-table" onclick="alert('Abrindo documento...')">Visualizar</button>
+                                    <button class="btn-table" onclick="triggerUpload()">Substituir Doc.</button>
+                                </td>
+                            </tr>
+
+                            <tr data-status="Vigente">
+                                <td>
+                                    <strong>Contrato Social Consolidado</strong><br>
+                                    <span class="text-detail">PDF • 5.1 MB</span>
+                                </td>
+                                <td><span class="badge" style="background:#F1F5F9; color:var(--texto-escuro);">Minha Empresa</span></td>
+                                <td>Indeterminado</td>
+                                <td><span class="badge ok">Vigente</span></td>
+                                <td class="btn-action-group">
+                                    <button class="btn-table" onclick="alert('Abrindo documento...')">Ver</button>
+                                    <button class="btn-table" onclick="alert('Renomeando arquivo no sistema...')">Editar Nome</button>
+                                    <button class="btn-action-icon delete" onclick="if(confirm('Tem certeza que deseja apagar este documento do cofre?')) alert('Excluído.')">🗑️</button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+        </main>
+    </div>
+</body>
+</html>
