@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Cliente | SB Intelligence</title>
+    
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    
+    <script src="../../assets/js/dashboard-cliente.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-main">SB Intelligence System</span>
+                <span class="logo-subtitle">Portal do Cliente</span>
+            </div>
+            <nav>
+                <a href="dashboard-cliente.html" class="nav-link active">Visão Geral</a>
+                <a href="meus-editais.html" class="nav-link">Meus Editais (Match)</a>
+                <a href="ged-cliente.html" class="nav-link">Central de Documentos (GED)</a>
+                <a href="faturas-comissoes.html" class="nav-link">Faturas e Comissões</a>
+                <a href="falar-consultor.html" class="nav-link">Falar com Consultor</a>
+            </nav>
+        </aside>
+
+        <main class="main-wrapper">
+            <header class="top-header">
+                <div class="header-left">
+                    <h2>Painel de Controle e Transparência</h2>
+                </div>
+                <div class="header-right">
+                    <div class="user-profile">
+                        <div style="text-align: right; line-height: 1.2;">
+                            <span style="display: block; font-weight: 700; color: var(--azul-principal);">MedSupply Brasil</span>
+                            <span style="font-size: 11px; color: var(--texto-secundario);">Plano Standard</span>
+                        </div>
+                        <div class="avatar" style="background-color: var(--azul-principal);">M</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="container">
+                
+                <div class="card accent-azul" style="background: linear-gradient(to right, #ffffff, #F8FAFC);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <div>
+                            <h2 id="greetingTitle" style="color: var(--azul-principal); font-size: 21px; margin-bottom: 4px;">Olá, Carlos!</h2>
+                            <p class="text-detail" style="font-size: 13px; color: var(--texto-escuro);">Abaixo você pode auditar em tempo real as operações que nossa equipe técnica e inteligência artificial estão executando para sua empresa.</p>
+                        </div>
+                        <button class="btn-novo" onclick="location.href='meus-editais.html'">Analisar Novos Matches →</button>
+                    </div>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="card accent-azul" style="cursor: pointer;" onclick="location.href='meus-editais.html'">
+                        <h3 class="card-title">Novas Oportunidades</h3>
+                        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+                            <h2>4 Editais</h2>
+                            <span class="badge" style="background:#E3F2FD; color:var(--azul-principal);">Ver Lista</span>
+                        </div>
+                        <p class="text-detail">Mapeados pelo Robô nas últimas 24h</p>
+                    </div>
+                    
+                    <div class="card accent-dourado">
+                        <h3 class="card-title">Licitações Autorizadas</h3>
+                        <h2>3 Processos</h2>
+                        <p class="text-detail">Em fase de preparação e estudo</p>
+                    </div>
+                    
+                    <div class="card accent-verde">
+                        <h3 class="card-title">Contratos Arrematados</h3>
+                        <h2>R$ 450.000</h2>
+                        <p class="text-detail">Ata de Registro de Preços vigentes</p>
+                    </div>
+                    
+                    <div class="card accent-laranja">
+                        <h3 class="card-title">Avisos do Sistema</h3>
+                        <h2>1 Alerta</h2>
+                        <p class="text-detail">Ações pendentes de compliance</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    
+                    <div class="card accent-azul">
+                        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--borda); padding-bottom: 12px;">
+                            <h3 class="card-title" style="margin: 0;">Linha do Tempo: Atividade da SB em Nome do Cliente</h3>
+                            <span class="badge ok" style="font-size: 11px;">Atualizado Agora</span>
+                        </div>
+
+                        <div class="activity-feed">
+                            <div class="activity-item live">
+                                <div class="activity-icon">🔴</div>
+                                <div class="activity-content">
+                                    <h4>Pregão Eletrônico 112/2026 em Andamento</h4>
+                                    <p>Nossa consultora técnica alocada (Samara) ingressou na Sala de Disputas do Portal de Compras Públicas para defender seus lances para <strong>Amoxicilina</strong>. Status atual: 1º Lugar Provisório.</p>
+                                </div>
+                                <div class="activity-meta">14:02<br><span style="color:var(--alerta);">Ao Vivo</span></div>
+                            </div>
+
+                            <div class="activity-item intel">
+                                <div class="activity-icon">🧠</div>
+                                <div class="activity-content">
+                                    <h4>Estratégia de Preço Formulada pelo SAD</h4>
+                                    <p>O Sistema de Apoio à Decisão concluiu o cruzamento estatístico e gerou a margem ótima de segurança para o <strong>Pregão 042/2026 (Kit Diabetes - SES/SP)</strong> com base nas suas diretrizes de custo.</p>
+                                </div>
+                                <div class="activity-meta">Há 2h<br><span>IA Concluída</span></div>
+                            </div>
+
+                            <div class="activity-item system">
+                                <div class="activity-icon">🤖</div>
+                                <div class="activity-content">
+                                    <h4>Nova Oportunidade Identificada pelo Robô</h4>
+                                    <p>A varredura síncrona do Web Scraper localizou um edital de alta compatibilidade na Prefeitura de Manaus (Pregão 098/2026 - Material Hospitalar). O registro foi enviado para sua fila de análise.</p>
+                                </div>
+                                <div class="activity-meta">Hoje às 07:15<br><span>Automação</span></div>
+                            </div>
+
+                            <div class="activity-item win">
+                                <div class="activity-icon">🏆</div>
+                                <div class="activity-content">
+                                    <h4>Vitória Homologada e Ata Publicada</h4>
+                                    <p>O Diário Oficial publicou a homologação do <strong>Pregão 015/2026 (UPA Zona Leste)</strong>. O contrato de R$ 250.000,00 foi oficialmente arrematado. O faturamento de comissão de êxito foi processado.</p>
+                                </div>
+                                <div class="activity-meta">Ontem<br><span style="color:var(--sucesso);">Sucesso</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card accent-laranja">
+                        <div style="border-bottom: 1px solid var(--borda); padding-bottom: 12px;">
+                            <h3 class="card-title" style="margin: 0; color: var(--alerta);">Ações Emergenciais Requeridas</h3>
+                        </div>
+
+                        <div class="widget-alert-box">
+                            <p class="text-detail" style="color: var(--texto-escuro);">O sistema detectou pendências críticas que limitam a participação em novas disputas:</p>
+                            
+                            <div class="alert-card-action" onclick="alert('Redirecionando para a aba de upload do GED do Cliente...')">
+                                <div style="padding-right: 10px;">
+                                    <h4 style="color: var(--erro); font-size: 13px; font-weight: 700;">Certidão TRT Vencida</h4>
+                                    <p class="text-detail" style="color: #7f1d1d; margin-top: 2px;">Você foi bloqueado no Pregão 201/2026 por falta de documento.</p>
+                                </div>
+                                <span style="font-size: 16px;">➔</span>
+                            </div>
+
+                            <div class="alert-card-action" style="background-color: #FFF3E0; border-color: #FFE0B2;" onclick="alert('Redirecionando para visualização da ANVISA no GED...')">
+                                <div>
+                                    <h4 style="color: var(--alerta); font-size: 13px; font-weight: 700;">Alvará ANVISA vence em 4 dias</h4>
+                                    <p class="text-detail" style="color: #7c2d12; margin-top: 2px;">Faça o envio preventivo do novo PDF para evitar suspensões automatizadas.</p>
+                                </div>
+                                <span style="font-size: 16px; color: var(--alerta);">➔</span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid var(--borda); text-align: center;">
+                            <span class="text-detail" style="font-weight: 600; display: block; margin-bottom: 8px;">Precisa de suporte imediato?</span>
+                            <button class="btn-table" style="width: 100%;" onclick="alert('Disparando chat síncrono com a consultora responsável no WhatsApp...')">💬 Chamar Consultor no WhatsApp</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+        </main>
+    </div>
+</body>
+</html>
