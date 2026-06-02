@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faturas e Comissões | SB Intelligence</title>
+    
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    
+    <script src="../../assets/js/faturas-comissoes.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-main">SB Intelligence System</span>
+                <span class="logo-subtitle">Portal do Cliente</span>
+            </div>
+            <nav>
+                <a href="dashboard-cliente.html" class="nav-link">Visão Geral</a>
+                <a href="meus-editais.html" class="nav-link">Meus Editais (Match)</a>
+                <a href="ged-cliente.html" class="nav-link">Central de Documentos (GED)</a>
+                <a href="faturas-comissoes.html" class="nav-link active">Faturas e Comissões</a>
+                <a href="falar-consultor.html" class="nav-link">Falar com Consultor</a>
+            </nav>
+        </aside>
+
+        <main class="main-wrapper">
+            <header class="top-header">
+                <div class="header-left">
+                    <h2>Gestão Financeira e Faturamento</h2>
+                </div>
+                <div class="header-right" style="display: flex; align-items: center;">
+                    <div class="notification-container" onclick="document.getElementById('notifMenu').classList.toggle('active')">
+                        <div class="notification-bell">🔔</div>
+                        <div class="notif-menu" id="notifMenu">
+                            <div class="notif-item">Sua fatura vence em 5 dias.</div>
+                        </div>
+                    </div>
+
+                    <div class="user-profile">
+                        <div style="text-align: right; line-height: 1.2;">
+                            <span style="display: block; font-weight: 700; color: var(--azul-principal);">MedSupply Brasil</span>
+                            <span id="headerPlanBadge" style="font-size: 11px; color: var(--texto-secundario);">Plano Standard</span>
+                        </div>
+                        <div class="avatar" style="background-color: var(--azul-principal);">M</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="container">
+                
+                <div class="card accent-verde">
+                    <div class="finance-summary">
+                        <div>
+                            <h3 class="card-title" style="margin-bottom: 8px;">Transparência de Resultados (2026)</h3>
+                            <p class="text-detail" style="font-size: 14px; max-width: 600px;">
+                                Acompanhe o retorno sobre o seu investimento. Através da nossa consultoria e automação, a sua empresa arrematou um volume expressivo de contratos com o Governo.
+                            </p>
+                        </div>
+                        <div class="roi-highlight">
+                            <p>Volume Total de Contratos Ganhos (SB)</p>
+                            <h2>R$ 1.250.000,00</h2>
+                            <span class="badge" style="background: #E8F5E9; color: var(--sucesso); font-size: 12px;">🏆 Sucesso Comprovado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="card accent-azul">
+                        <h3 class="card-title">Assinatura do Portal</h3>
+                        <h2 id="kpiPlanTitle">Plano Standard</h2>
+                        
+                        <div class="plan-manage-box">
+                            <span style="color: var(--sucesso); font-size: 12px; font-weight: 600;">✅ Status: Acesso Liberado</span>
+                            <div style="display: flex; gap: 8px; margin-top: 4px;">
+                                <button class="btn-table" style="flex: 1; border-color: var(--azul-principal); color: var(--azul-principal);" onclick="openPlanModal()">Alterar Plano 🔄</button>
+                                <button class="btn-table" style="color: var(--erro); border-color: #FFCDD2; background-color: #FFF5F5;" onclick="cancelarPlano()">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card accent-dourado">
+                        <h3 class="card-title">Total de Comissões Pagas</h3>
+                        <h2>R$ 18.500</h2>
+                        <p class="text-detail">Ref. a 12 pregões ganhos</p>
+                    </div>
+                    <div class="card accent-laranja">
+                        <h3 class="card-title">Faturas em Aberto</h3>
+                        <h2>R$ 5.000</h2>
+                        <p class="text-detail" style="color: var(--alerta); font-weight: 600;">Vence em 5 dias</p>
+                    </div>
+                </div>
+
+                <div class="card accent-dourado">
+                    <div style="border-bottom: 1px solid var(--borda); padding-bottom: 12px; margin-bottom: 15px;">
+                        <h3 class="card-title" style="margin: 0;">Histórico de Comissões por Êxito</h3>
+                        <p class="text-detail">Honorários gerados automaticamente apenas sobre licitações homologadas a seu favor.</p>
+                    </div>
+
+                    <table class="table-base">
+                        <thead>
+                            <tr>
+                                <th>Licitação Vencida</th>
+                                <th>Valor do Contrato</th>
+                                <th>Taxa Acordada</th>
+                                <th>Valor da Comissão</th>
+                                <th>Status</th>
+                                <th>Métodos de Pagamento Disponíveis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Pregão 015/2026 (UPA Zona Leste)</strong><br>
+                                    <span class="text-detail">Homologado em 15/05/2026</span>
+                                </td>
+                                <td style="font-weight: 600;">R$ 250.000,00</td>
+                                <td>2.0%</td>
+                                <td style="font-weight: 700; color: var(--dourado);">R$ 5.000,00</td>
+                                <td><span class="badge alerta" style="background-color: #FFF3E0; color: var(--alerta);">Pendente</span></td>
+                                <td>
+                                    <div class="payment-actions-group">
+                                        <button class="btn-pay-primary" onclick="pagarFatura(this, 'Pix', 'Comissão Pregão 015')">⚡ Pix</button>
+                                        <button class="btn-pay-option" onclick="pagarFatura(this, 'Cartão de Crédito', 'Comissão Pregão 015')">💳 Cartão</button>
+                                        <button class="btn-pay-option" onclick="pagarFatura(this, 'Boleto Bancário', 'Comissão Pregão 015')">📄 Boleto</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Pregão 112/2025 (Pref. Curitiba)</strong><br>
+                                    <span class="text-detail">Homologado em 10/12/2025</span>
+                                </td>
+                                <td style="font-weight: 600;">R$ 600.000,00</td>
+                                <td>1.5%</td>
+                                <td style="font-weight: 700;">R$ 9.000,00</td>
+                                <td><span class="badge ok">Liquidado</span></td>
+                                <td><span style="font-size: 12px; color: var(--texto-secundario); font-weight: 600;">Pago via Cartão de Crédito</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card accent-azul">
+                    <div style="border-bottom: 1px solid var(--borda); padding-bottom: 12px; margin-bottom: 15px;">
+                        <h3 class="card-title" style="margin: 0;">Assinatura Mensal (Uso do Sistema)</h3>
+                        <p class="text-detail">Recorrência mensal de licenciamento do software.</p>
+                    </div>
+
+                    <table class="table-base">
+                        <thead>
+                            <tr>
+                                <th>Competência</th>
+                                <th>Plano Contratado</th>
+                                <th>Vencimento</th>
+                                <th>Valor</th>
+                                <th>Status</th>
+                                <th>Comprovante</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Maio / 2026</strong></td>
+                                <td class="table-plan-cell">Plano Standard</td>
+                                <td>15/05/2026</td>
+                                <td class="table-price-cell">R$ 299,00</td>
+                                <td><span class="badge ok">Pago</span></td>
+                                <td><button class="btn-table" onclick="alert('Gerando Nota Fiscal de Serviço (NFSe)...')">Nota Fiscal</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <div id="planModal" class="modal-overlay" onclick="closePlanModal(event)">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div>
+                    <h2 style="font-size: 18px; color: var(--azul-principal);">Upgrade / Downgrade de Plano</h2>
+                    <p class="text-detail">Selecione o novo pacote de licenças para sua distribuidora.</p>
+                </div>
+                <button class="modal-close-btn" onclick="document.getElementById('planModal').classList.remove('active')">✕</button>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div class="plan-option-card" id="card-basic" onclick="mudarPlanoPara('Básico', 'R$ 149,00')">
+                    <div>
+                        <strong style="font-size: 14px; color: var(--texto-escuro);">Plano Básico</strong>
+                        <p class="text-detail">Até 2 robôs de busca • Sem suporte do SAD</p>
+                    </div>
+                    <strong style="color: var(--azul-principal);">R$ 149/mês</strong>
+                </div>
+
+                <div class="plan-option-card current" id="card-standard">
+                    <div>
+                        <strong style="font-size: 14px; color: var(--texto-escuro);">Plano Standard (Seu Plano)</strong>
+                        <p class="text-detail">Robôs ilimitados • Triagem Básica SAD</p>
+                    </div>
+                    <strong style="color: var(--dourado);">R$ 299/mês</strong>
+                </div>
+
+                <div class="plan-option-card" id="card-premium" onclick="mudarPlanoPara('Premium', 'R$ 499,00')">
+                    <div>
+                        <strong style="font-size: 14px; color: var(--texto-escuro);">Plano Premium 🚀</strong>
+                        <p class="text-detail">Robôs em tempo real • SAD Prazos • Consultor Dedicado</p>
+                    </div>
+                    <strong style="color: var(--sucesso);">R$ 499/mês</strong>
+                </div>
+            </div>
+
+            <div style="text-align: right; border-top: 1px solid var(--borda); padding-top: 12px; margin-top: 4px;">
+                <span class="text-detail">*A alteração será calculada pro-rata na próxima fatura.</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
