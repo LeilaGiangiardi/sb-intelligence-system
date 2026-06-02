@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipeline CRM | SB Intelligence</title>
+    
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    
+    <script src="../../assets/js/pipeline.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-main">SB Intelligence System</span>
+                <span class="logo-subtitle">Portal do Gestor</span>
+            </div>
+            <nav>
+                <a href="dashboard-admin.html" class="nav-link">Centro de Comando</a>
+                <a href="editais-sugeridos.html" class="nav-link">Radar do Robô (SAD)</a>
+                <a href="pipeline-crm.html" class="nav-link active">Pipeline CRM</a>
+                <a href="financeiro.html" class="nav-link">Financeiro</a>
+                <a href="clientes-ged.html" class="nav-link">Clientes e GED</a>
+            </nav>
+        </aside>
+
+        <main class="main-wrapper">
+            <header class="top-header">
+                <div class="header-left">
+                    <h2>Gestão de Oportunidades e Disputas (Pipeline)</h2>
+                </div>
+                <div class="header-right">
+                    <div class="user-profile"><span>Olá, Leila</span><div class="avatar">L</div></div>
+                </div>
+            </header>
+
+            <section class="container">
+                <div class="card accent-dourado">
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <h3 class="card-title" style="margin-bottom: 0;">Filtros do Funil de Licitações</h3>
+                        <div class="crm-filter-group">
+                            <input type="text" class="search-bar" id="searchKanban" placeholder="Buscar edital, órgão ou cliente..." style="width: 280px;">
+                            <button class="btn-novo">+ Adicionar Oportunidade Manual</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="card accent-azul">
+                        <h3 class="card-title">Total no Pipeline</h3>
+                        <h2>R$ 4.250.000</h2>
+                        <p class="text-detail">Expectativa total de contratos</p>
+                    </div>
+                    <div class="card accent-dourado">
+                        <h3 class="card-title">Aguardando Análise SAD</h3>
+                        <h2>12 Editais</h2>
+                        <p class="text-detail" style="color: var(--dourado); font-weight:600;">Processamento automatizado pendente</p>
+                    </div>
+                    <div class="card accent-laranja">
+                        <h3 class="card-title">Disputas Hoje (Ao Vivo)</h3>
+                        <h2>3 Pregões</h2>
+                        <p class="text-detail" style="color: var(--alerta); font-weight:600;">🔴 Sala de disputa ativa</p>
+                    </div>
+                    <div class="card accent-verde">
+                        <h3 class="card-title">Taxa de Conversão (Win Rate)</h3>
+                        <h2>68%</h2>
+                        <p class="text-detail" style="color: var(--sucesso); font-weight:600;">Média de vitórias do trimestre</p>
+                    </div>
+                </div>
+
+                <div class="kanban-board">
+                    
+                    <div class="kanban-column" data-stage="Captação">
+                        <div class="kanban-header">
+                            <span class="kanban-title">1. Captação (Robô)</span>
+                            <span class="badge" style="background: var(--borda);">1</span>
+                        </div>
+                        <div class="kanban-value">Potencial: R$ 320.000</div>
+                        
+                        <div class="kanban-card card-robo" onclick="openModal(this)" 
+                             data-id="ED-980" 
+                             data-portal="Portal de Compras Governamentais (Comprasnet)"
+                             data-objeto="Aquisição de Insumos Descartáveis Hospitalares"
+                             data-abertura="10/06/2026 às 09:00"
+                             data-regime="Menor Preço por Item"
+                             data-operador="🤖 Integração Automática">
+                            <div class="k-card-client">Distribuidora Norte</div>
+                            <div class="k-card-title">Pregão 098/2026 - Material Hospitalar</div>
+                            <div class="k-card-org">Órgão: Prefeitura de Manaus</div>
+                            <div class="k-card-value">R$ 320.000,00</div>
+                            <div class="k-card-footer">
+                                <span class="badge" style="background: #E2E8F0; color: #475569;">Novo Edital</span>
+                                <span class="k-card-operator">🤖 Robô SB</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kanban-column" data-stage="Análise SAD">
+                        <div class="kanban-header">
+                            <span class="kanban-title">2. Análise SAD</span>
+                            <span class="badge" style="background: #E3F2FD; color: var(--azul-principal);">1</span>
+                        </div>
+                        <div class="kanban-value">Potencial: R$ 450.000</div>
+                        
+                        <div class="kanban-card card-sad" onclick="openModal(this)" 
+                             data-id="ED-042" 
+                             data-portal="Licitações-E Banco do Brasil"
+                             data-objeto="Registro de Preço para Kits de Monitoramento Glicêmico"
+                             data-abertura="02/06/2026 às 14:00"
+                             data-regime="Menor Preço Global"
+                             data-sad-prob="92%" 
+                             data-sad-preco="R$ 42,50/unidade"
+                             data-operador="👤 Samara (Consultora)">
+                            <div class="k-card-client">MedSupply Brasil</div>
+                            <div class="k-card-title">Pregão 042/2026 - Kit Diabetes</div>
+                            <div class="k-card-org">Órgão: SES - SP</div>
+                            <div class="k-card-value">R$ 450.000,00</div>
+                            <div class="k-card-footer">
+                                <span class="badge ok">SAD Calculado</span>
+                                <span class="k-card-operator">👤 Samara</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kanban-column" data-stage="Validação GED">
+                        <div class="kanban-header">
+                            <span class="kanban-title">3. Validação (GED)</span>
+                            <span class="badge" style="background: #FFF3E0; color: var(--alerta);">1</span>
+                        </div>
+                        <div class="kanban-value">Aguardando Documento</div>
+                        
+                        <div class="kanban-card card-disputa" onclick="openModal(this)" 
+                             data-id="ED-201" 
+                             data-portal="Portal BEC (Bolsa Eletrônica de Compras)"
+                             data-objeto="Fornecimento de Fios Cirúrgicos Agulhados"
+                             data-abertura="08/06/2026 às 10:30"
+                             data-regime="Menor Preço por Lote"
+                             data-operador="👤 João (Compliance)">
+                            <div class="k-card-client">TechMed Soluções</div>
+                            <div class="k-card-title">Pregão 201/2026 - Fios Cirúrgicos</div>
+                            <div class="k-card-org">Órgão: Hospital das Clínicas</div>
+                            <div class="k-card-value">R$ 180.000,00</div>
+                            <div class="k-card-footer">
+                                <span class="badge erro">Falta Certidão TRT</span>
+                                <span class="k-card-operator">👤 João</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kanban-column" data-stage="Sala de Disputa" style="border: 2px solid var(--dourado); background-color: #FFFAED;">
+                        <div class="kanban-header">
+                            <span class="kanban-title" style="color: var(--dourado);">4. Em Disputa 🔴</span>
+                            <span class="badge" style="background: #FFF8E1; color: var(--dourado);">1</span>
+                        </div>
+                        <div class="kanban-value">Ao Vivo: R$ 1.100.000</div>
+                        
+                        <div class="kanban-card card-ganho" onclick="openModal(this)" 
+                             data-id="ED-112" 
+                             data-portal="Portal de Compras Públicas"
+                             data-objeto="Aquisição de Amoxicilina + Clavulanato suspensão oral"
+                             data-abertura="24/05/2026 às 14:00"
+                             data-regime="Menor Preço por Item"
+                             data-operador="👤 Samara (Consultora)">
+                            <div class="k-card-client">FarmaSul Distribuidora</div>
+                            <div class="k-card-title">Pregão 112/2026 - Amoxicilina</div>
+                            <div class="k-card-org">Órgão: Prefeitura de Curitiba</div>
+                            <div class="k-card-value">R$ 1.100.000,00</div>
+                            <div class="k-card-footer">
+                                <span class="badge sucesso">1º Lugar Provisório</span>
+                                <span class="k-card-operator">👤 Samara</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kanban-column" data-stage="Vitória Homologada">
+                        <div class="kanban-header">
+                            <span class="kanban-title" style="color: var(--sucesso);">5. Vitória (Ganho)</span>
+                            <span class="badge ok">1</span>
+                        </div>
+                        <div class="kanban-value">Faturado: R$ 5.000,00</div>
+                        
+                        <div class="kanban-card card-ganho" onclick="openModal(this)" 
+                             data-id="ED-015" 
+                             data-portal="Comprasnet"
+                             data-objeto="Registro de Preços de Luvas de Procedimento Não Cirúrgico"
+                             data-abertura="15/05/2026"
+                             data-regime="Menor Preço por Lote"
+                             data-operador="👤 Leila (Diretoria)">
+                            <div class="k-card-client">Hospitalar & Cia</div>
+                            <div class="k-card-title">Pregão 015/2026 - Luvas de Proc.</div>
+                            <div class="k-card-org">Órgão: UPA Zona Leste</div>
+                            <div class="k-card-value">R$ 250.000,00</div>
+                            <div class="k-card-footer">
+                                <span class="badge ok">Homologado</span>
+                                <span class="k-card-operator">👤 Leila</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="kanbanModal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div>
+                    <span id="mId" class="badge" style="background:#ECEFF1; color:#37474F; margin-bottom: 6px;">ID</span>
+                    <h2 id="mTitle" style="font-size: 18px; color: var(--azul-principal);">Título da Licitação</h2>
+                    <p id="mClient" class="text-detail" style="font-weight: 700; color: var(--dourado);">Cliente</p>
+                </div>
+                <button class="modal-close-btn" onclick="document.getElementById('kanbanModal').classList.remove('active')">✕</button>
+            </div>
+            
+            <div>
+                <span class="modal-section-title">Resumo Estruturado do Edital</span>
+                <table class="modal-summary-table">
+                    <tr>
+                        <td class="label">Órgão Licitante</td>
+                        <td id="mOrg">Carregando...</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Portal de Origem</td>
+                        <td id="mPortal" style="color: var(--azul-principal); font-weight: 500;">Carregando...</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Objeto do Edital</td>
+                        <td id="mObjeto">Carregando...</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Data de Abertura</td>
+                        <td id="mAbertura" style="font-weight: 600;">Carregando...</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Regime de Julgamento</td>
+                        <td id="mRegime">Carregando...</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Valor Estimado</td>
+                        <td id="mValue" style="font-weight: 700; color: var(--dourado);">R$ 0,00</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div style="display: flex; gap: 12px; background-color: #F8FAFC; padding: 12px; border-radius: 6px; border: 1px dashed var(--borda);">
+                <div style="flex: 1;">
+                    <span class="modal-section-title" style="font-size: 11px;">Links de Auditoria Externa</span>
+                    <div style="display: flex; gap: 10px; margin-top: 6px;">
+                        <button class="btn-table" style="flex: 1; text-align: center;" onclick="alert('Redirecionando para o portal eletrônico de origem onde o Robô SB capturou os dados...')">🔗 Ir para Site de Origem</button>
+                        <button class="btn-table" style="flex: 1; text-align: center;" onclick="alert('Abrindo repositório em nuvem para download do arquivo de Edital Original (PDF)...')">📄 Ver Edital Original (PDF)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mSadBlock" style="background-color: #E3F2FD; padding: 12px; border-radius: 6px; border-left: 4px solid var(--azul-principal); display: none;">
+                <span class="modal-section-title" style="color: var(--azul-principal);">Recomendação Algorítmica do SAD</span>
+                <div style="display: flex; justify-content: space-between; margin-top: 6px; font-size: 13px;">
+                    <span><strong>Probabilidade de Vitória:</strong> <span id="mSadProb" style="color:var(--sucesso); font-weight:bold;">0%</span></span>
+                    <span><strong>Sugestão de Preço Teto:</strong> <span id="mSadPreco" style="font-weight:bold;">R$ 0,00</span></span>
+                </div>
+            </div>
+
+            <div>
+                <span class="modal-section-title">Piloto Alocado Atualmente</span>
+                <p id="mOperator" style="font-size: 13px; font-weight: 600; margin-top: 4px; color: var(--texto-escuro);">Nome</p>
+            </div>
+
+            <div class="modal-actions-row">
+                <span style="font-size: 11px; color: var(--texto-secundario);">*Ações restritas ao nível de acesso do operador.</span>
+                <div id="modalActions" style="display: flex; gap: 10px;">
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
