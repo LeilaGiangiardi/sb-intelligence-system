@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão Financeira e BI | SB Intelligence</title>
+    
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    
+    <script src="../../assets/js/financeiro.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-main">SB Intelligence System</span>
+                <span class="logo-subtitle">Portal do Gestor</span>
+            </div>
+            <nav>
+                <a href="dashboard-admin.html" class="nav-link">Centro de Comando</a>
+                <a href="editais-sugeridos.html" class="nav-link">Radar do Robô (SAD)</a>
+                <a href="pipeline-crm.html" class="nav-link">Pipeline CRM</a>
+                <a href="financeiro.html" class="nav-link active">Financeiro</a>
+                <a href="clientes-ged.html" class="nav-link">Clientes e GED</a>
+            </nav>
+        </aside>
+
+        <main class="main-wrapper">
+            <header class="top-header">
+                <div class="header-left">
+                    <h2>Auditoria Financeira e BI de Performance</h2>
+                </div>
+                <div class="header-right">
+                    <div class="user-profile">
+                        <span>Olá, Leila</span>
+                        <div class="avatar">L</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="container">
+                
+                <div class="card accent-azul">
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <div>
+                            <h3 class="card-title">Filtro de Competência Global</h3>
+                            <p class="text-detail">Dados consolidados referentes ao ano fiscal operacional de 2026.</p>
+                        </div>
+                        <div class="crm-filter-group">
+                            <input type="text" class="search-bar" id="searchFinance" placeholder="Buscar por cliente, processo ou órgão..." style="width: 300px;">
+                            <button class="btn-relatorio" onclick="alert('Gerando Relatório Financeiro Consolidado (PDF)...')">📊 Gerar Relatório Mensal</button>
+                            <button class="btn-novo">+ Emitir Faturamento</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="card accent-azul">
+                        <h3 class="card-title">Faturamento Bruto</h3>
+                        <h2>R$ 81.650,00</h2>
+                        <p style="color: var(--sucesso); font-size: 12px; font-weight: 600;">▲ 12.4% este mês</p>
+                    </div>
+                    <div class="card accent-azul">
+                        <h3 class="card-title">Mensalidades Recorrentes</h3>
+                        <h2>R$ 21.400,00</h2>
+                        <p class="text-detail">42 contratos ativos</p>
+                    </div>
+                    <div class="card accent-dourado">
+                        <h3 class="card-title">Comissões de Êxito (SAD)</h3>
+                        <h2 style="color: var(--dourado);">R$ 60.250,00</h2>
+                        <p style="color: var(--sucesso); font-size: 12px; font-weight: 600;">Ganhos diretos calculados</p>
+                    </div>
+                    <div class="card accent-vermelho">
+                        <h3 class="card-title">Inadimplência Restritiva</h3>
+                        <h2>R$ 12.949,00</h2>
+                        <p style="color: var(--erro); font-size: 12px; font-weight: 600;">⚠️ Acessos bloqueados pelo sistema</p>
+                    </div>
+                </div>
+
+                <div class="finance-grid-split">
+                    <div class="card accent-azul">
+                        <h3 class="card-title">Composição do Faturamento (Mix de Receita)</h3>
+                        <div style="display: flex; height: 30px; border-radius: 4px; overflow: hidden; margin: 35px 0 25px 0;">
+                            <div style="width: 26%; background-color: var(--azul-principal); display: flex; align-items: center; justify-content: center; color: white; font-size: 11px; font-weight: bold;">Mensalidades (26%)</div>
+                            <div style="width: 74%; background-color: var(--dourado); display: flex; align-items: center; justify-content: center; color: white; font-size: 11px; font-weight: bold;">Comissões de Êxito (74%)</div>
+                        </div>
+                        <p class="text-detail">A maior parcela da receita provém do comissionamento de disputas vencidas, o que comprova o retorno sobre o investimento do cliente.</p>
+                    </div>
+
+                    <div class="card accent-dourado">
+                        <h3 class="card-title">Evolução de Receita por Trimestre</h3>
+                        <div class="chart-bar-vertical">
+                            <div class="bar-group"><div class="bar" style="height: 40px; background-color: var(--borda);"></div><span class="bar-label">T1/25</span></div>
+                            <div class="bar-group"><div class="bar" style="height: 70px; background-color: var(--borda);"></div><span class="bar-label">T2/25</span></div>
+                            <div class="bar-group"><div class="bar" style="height: 110px; background-color: var(--azul-principal);"></div><span class="bar-label">T3/25</span></div>
+                            <div class="bar-group"><div class="bar" style="height: 140px; background-color: var(--dourado);"></div><span class="bar-label">T4/25</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card accent-dourado">
+                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0 20px 0; border-bottom: 1px solid var(--borda);">
+                        <h3 class="card-title" style="margin-bottom: 0;">Detalhamento de Comissões por Licitação</h3>
+                        
+                        <div class="crm-filter-group">
+                            <select class="select-filter" id="filterMonth">
+                                <option value="">Todos os Meses</option>
+                                <option value="Janeiro">Janeiro</option>
+                                <option value="Fevereiro">Fevereiro</option>
+                                <option value="Março">Março</option>
+                                <option value="Abril">Abril</option>
+                                <option value="Maio" selected>Maio</option>
+                            </select>
+                            <select class="select-filter" id="filterStatus">
+                                <option value="">Todos os Status</option>
+                                <option value="Finalizado e Pago">Processo Finalizado e Pago</option>
+                                <option value="Em Andamento">Processo em Andamento</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <table class="table-base">
+                        <thead>
+                            <tr>
+                                <th>Processo / Edital</th>
+                                <th>Cliente Beneficiado</th>
+                                <th>Mês</th>
+                                <th>Valor Arrematado</th>
+                                <th>Comissão</th>
+                                <th>Status do Processo</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="commissionTableBody">
+                            <tr>
+                                <td><strong>Pregão 042/2026</strong></td>
+                                <td>MedSupply Brasil</td>
+                                <td>Maio</td>
+                                <td>R$ 450.000,00</td>
+                                <td style="color: var(--sucesso); font-weight: 700;">R$ 9.000,00 (2%)</td>
+                                <td><span class="badge ok">Finalizado e Pago</span></td>
+                                <td><button class="btn-table" onclick="location.href='clientes-ged.html'">Ver Perfil</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pregão 112/2026</strong></td>
+                                <td>FarmaSul Distribuidora</td>
+                                <td>Maio</td>
+                                <td>R$ 1.100.000,00</td>
+                                <td style="color: var(--sucesso); font-weight: 700;">R$ 16.500,00 (1.5%)</td>
+                                <td><span class="badge ok">Finalizado e Pago</span></td>
+                                <td><button class="btn-table" onclick="location.href='clientes-ged.html'">Ver Perfil</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pregão 089/2026</strong></td>
+                                <td>Distribuidora Norte</td>
+                                <td>Maio</td>
+                                <td>R$ 320.000,00</td>
+                                <td style="color: var(--dourado); font-weight: 700;">R$ 6.400,00 (2%)</td>
+                                <td><span class="badge alerta">Em Andamento</span></td>
+                                <td><button class="btn-table" onclick="location.href='clientes-ged.html'">Ver Perfil</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card accent-azul">
+                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0 20px 0; border-bottom: 1px solid var(--borda);">
+                        <div>
+                            <h3 class="card-title" style="margin-bottom: 4px;">Monitoramento das Assinaturas Mensais</h3>
+                            <p class="text-detail">Visão unificada da adimplência com controle de acessos 100% binário e automatizado.</p>
+                        </div>
+                        <span class="badge ok" style="background-color: var(--azul-principal); color: white; font-size: 13px; padding: 8px 16px;">
+                            Total de Assinaturas Ativas: 42
+                        </span>
+                    </div>
+
+                    <table class="table-base">
+                        <thead>
+                            <tr>
+                                <th>Cliente / Empresa</th>
+                                <th>Plano Contratado</th>
+                                <th>Valor Mensal</th>
+                                <th>Vencimento</th>
+                                <th>Dias em Atraso</th>
+                                <th>Status do Pagamento</th>
+                                <th>Acesso ao Portal</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subscriptionTableBody">
+                            <tr>
+                                <td><strong>MedSupply Brasil</strong></td>
+                                <td>Standard</td>
+                                <td>R$ 299,00</td>
+                                <td>15/05/2026</td>
+                                <td>-</td>
+                                <td><span class="badge ok">Liquidado</span></td>
+                                <td><span style="color: var(--sucesso); font-weight: 600;">✅ Liberado</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Distribuidora Norte</strong></td>
+                                <td>Standard</td>
+                                <td>R$ 299,00</td>
+                                <td>18/05/2026</td>
+                                <td>-</td>
+                                <td><span class="badge ok">Liquidado</span></td>
+                                <td><span style="color: var(--sucesso); font-weight: 600;">✅ Liberado</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>TechMed Soluções</strong></td>
+                                <td>Premium</td>
+                                <td>R$ 499,00</td>
+                                <td>10/05/2026</td>
+                                <td style="color: var(--erro); font-weight: bold;">14 dias</td>
+                                <td><span class="badge erro">Não Pago</span></td>
+                                <td><span class="badge erro">🚫 BLOQUEADO</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>HospFarm Ltda</strong></td>
+                                <td>Premium</td>
+                                <td>R$ 499,00</td>
+                                <td>24/05/2026</td>
+                                <td style="color: var(--erro); font-weight: bold;">Hoje</td>
+                                <td><span class="badge erro">Não Pago</span></td>
+                                <td><span class="badge erro">🚫 SUSPENSO</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+        </main>
+    </div>
+</body>
+</html>
