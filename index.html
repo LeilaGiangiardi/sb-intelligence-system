@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SB Intelligence System | Login</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <script src="assets/js/login.js" defer></script>
+</head>
+<body class="login-body">
+
+    <div class="project-pitch">
+        <h1>SB Intelligence System</h1>
+        <p class="subtitle">
+            O Cérebro Operacional para Licitações Públicas. Um Sistema de Apoio à Decisão (SAD) projetado para automatizar, prever e gerenciar o ciclo de vendas para distribuidoras de saúde.
+        </p>
+        
+        <ul class="feature-list">
+            <li>
+                <span>✓</span>
+                <div>
+                    <strong>Web Scraper Inteligente</strong><br>
+                    Varredura automática de editais governamentais.
+                </div>
+            </li>
+            <li>
+                <span>✓</span>
+                <div>
+                    <strong>Apoio à Decisão (SAD)</strong><br>
+                    Análise de risco e sugestão de lances baseada em histórico.
+                </div>
+            </li>
+            <li>
+                <span>✓</span>
+                <div>
+                    <strong>Gestão Eletrônica (GED)</strong><br>
+                    Controle automatizado de validade de certidões e balanços.
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="login-box-container">
+        <h2>Acessar o Sistema</h2>
+        <p>Insira suas credenciais para continuar.</p>
+
+        <form id="form-login">
+            <div class="form-group-login">
+                <label for="email">E-mail corporativo</label>
+                <input type="email" id="email" class="form-control" placeholder="usuario@sblicitacoes.com" required>
+                <span id="erro-email" style="color: var(--erro); font-size: 12px; font-weight: 600; display: none; margin-top: 6px;">
+                    Formato inválido. Digite um e-mail com "@" e domínio.
+                </span>
+            </div>
+            
+            <div class="form-group-login">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" class="form-control" placeholder="••••••••" required>
+            </div>
+
+            <div class="form-group-login" style="margin-top: 10px;">
+                <label for="perfil">Selecione o Módulo de Acesso:</label>
+                <select id="perfil" class="form-control">
+                    <option value="gestor">Acesso Gestor (Admin/Consultor)</option>
+                    <option value="cliente">Acesso Cliente Final</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-login">Entrar</button>
+        </form>
+    </div>
+
+</body>
+</html>
