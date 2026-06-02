@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falar com Consultor | SB Intelligence</title>
+    
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    
+    <script src="../../assets/js/suporte.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-main">SB Intelligence System</span>
+                <span class="logo-subtitle">Portal do Cliente</span>
+            </div>
+            <nav>
+                <a href="dashboard-cliente.html" class="nav-link">Visão Geral</a>
+                <a href="meus-editais.html" class="nav-link">Meus Editais (Match)</a>
+                <a href="ged-cliente.html" class="nav-link">Central de Documentos (GED)</a>
+                <a href="faturas-comissoes.html" class="nav-link">Faturas e Comissões</a>
+                <a href="falar-consultor.html" class="nav-link active">Falar com Consultor</a>
+            </nav>
+        </aside>
+
+        <main class="main-wrapper">
+            <header class="top-header">
+                <div class="header-left">
+                    <h2>Central de Suporte e Atendimento</h2>
+                </div>
+                <div class="header-right" style="display: flex; align-items: center;">
+                    <div class="notification-container" onclick="toggleNotif()">
+                        <div class="notification-bell">🔔</div>
+                        <div class="notif-menu" id="notifMenu">
+                            <div class="notif-item">Sem novas notificações.</div>
+                        </div>
+                    </div>
+
+                    <div class="user-profile">
+                        <div style="text-align: right; line-height: 1.2;">
+                            <span style="display: block; font-weight: 700; color: var(--azul-principal);">MedSupply Brasil</span>
+                            <span style="font-size: 11px; color: var(--texto-secundario);">Plano Standard</span>
+                        </div>
+                        <div class="avatar" style="background-color: var(--azul-principal);">M</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="container">
+                
+                <div class="card accent-azul" style="margin-bottom: -10px;">
+                    <h3 class="card-title" style="margin-bottom: 4px;">Como podemos ajudar hoje?</h3>
+                    <p class="text-detail">Utilize nossos canais diretos para tirar dúvidas sobre editais, documentações ou alinhamento estratégico.</p>
+                </div>
+
+                <div class="support-grid">
+                    
+                    <div>
+                        <div class="card accent-dourado" style="margin-bottom: 24px;">
+                            <h3 class="card-title" style="border-bottom: 1px solid var(--borda); padding-bottom: 12px; margin-bottom: 16px;">Enviar Mensagem ao Consultor (Ticket)</h3>
+                            
+                            <form id="supportForm" onsubmit="enviarMensagem(event)">
+                                <div class="form-group">
+                                    <label for="assunto">Assunto / Motivo do Contato</label>
+                                    <select id="assunto" class="form-control" required>
+                                        <option value="">Selecione um assunto...</option>
+                                        <option value="Dúvida sobre um Edital/Match">Dúvida sobre um Edital/Match</option>
+                                        <option value="Problema com Documentação (GED)">Problema com Documentação (GED)</option>
+                                        <option value="Dúvida Financeira ou Faturamento">Dúvida Financeira ou Faturamento</option>
+                                        <option value="Solicitar Análise Específica">Solicitar Análise Específica de Edital</option>
+                                        <option value="Outros">Outros</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="mensagem">Detalhes da sua solicitação</label>
+                                    <textarea id="mensagem" class="form-control" placeholder="Descreva sua dúvida com o máximo de detalhes possível. Se for sobre um edital, informe o número do pregão..." required></textarea>
+                                </div>
+
+                                <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
+                                    <button type="submit" class="btn-novo">Enviar Solicitação ➔</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="card accent-azul">
+                            <h3 class="card-title" style="border-bottom: 1px solid var(--borda); padding-bottom: 12px; margin-bottom: 16px;">Perguntas Frequentes (FAQ)</h3>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>Quanto tempo demora a análise de um edital pelo SAD?</span>
+                                    <span>▼</span>
+                                </div>
+                                <div class="faq-answer">
+                                    Após você clicar em "Autorizar Disputa", nosso algoritmo (SAD) leva em média de 2 a 4 horas úteis para cruzar o histórico de preços do portal e sugerir a margem segura de lance.
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>Como atualizo uma certidão vencida?</span>
+                                    <span>▼</span>
+                                </div>
+                                <div class="faq-answer">
+                                    Acesse a aba "Central de Documentos (GED)" no menu lateral, localize a certidão que está com aviso amarelo ou vermelho e clique no botão "+ Atualizar" para enviar o novo PDF.
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>Posso acompanhar o consultor durante um pregão ao vivo?</span>
+                                    <span>▼</span>
+                                </div>
+                                <div class="faq-answer">
+                                    Sim! No dia do pregão, um link de acompanhamento aparecerá no seu painel na aba "Meus Editais". Você poderá ver a sala de disputas, mas os lances são aplicados exclusivamente pelo seu consultor por motivos de segurança.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="card accent-dourado" style="position: sticky; top: 20px;">
+                            <div class="consultant-profile">
+                                <div class="consultant-avatar">S</div>
+                                <h2 style="font-size: 18px; color: var(--azul-principal); margin-bottom: 4px;">Samara Silva</h2>
+                                <span class="badge" style="background-color: #E3F2FD; color: var(--azul-principal);">Consultora Técnica Dedicada</span>
+                                <p class="text-detail" style="margin-top: 12px; font-size: 12px; padding: 0 10px;">
+                                    Especialista em Licitações Públicas. Responsável técnica pelas análises e disputas da MedSupply Brasil.
+                                </p>
+                            </div>
+
+                            <div style="margin-top: 15px;">
+                                <span class="modal-section-title" style="display: block; margin-bottom: 10px; text-align: center; color: var(--texto-secundario);">Canais de Atendimento</span>
+                                
+                                <button class="contact-btn btn-whatsapp" onclick="abrirLink('WhatsApp')">
+                                    💬 Chamar no WhatsApp
+                                </button>
+                                
+                                <button class="contact-btn btn-meet" onclick="abrirLink('Google Meet')">
+                                    📅 Agendar Reunião (Vídeo)
+                                </button>
+                                
+                                <button class="contact-btn btn-email" onclick="abrirLink('Email')">
+                                    ✉️ samara.silva@sbintelligence.com
+                                </button>
+                            </div>
+
+                            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--borda); text-align: center;">
+                                <p class="text-detail" style="font-weight: 600;">Horário de Atendimento:</p>
+                                <p class="text-detail">Segunda a Sexta, das 08h às 18h.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
