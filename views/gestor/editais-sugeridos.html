@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar de Editais e Predição | SB Intelligence</title>
+    
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    
+    <script src="../../assets/js/radar.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-main">SB Intelligence System</span>
+                <span class="logo-subtitle">Portal do Gestor</span>
+            </div>
+            <nav> 
+                <a href="dashboard-admin.html" class="nav-link">Centro de Comando</a>
+                <a href="editais-sugeridos.html" class="nav-link active">Radar do Robô (SAD)</a>
+                <a href="pipeline-crm.html" class="nav-link">Pipeline CRM</a>
+                <a href="financeiro.html" class="nav-link">Financeiro</a>
+                <a href="clientes-ged.html" class="nav-link">Clientes e GED</a>
+            </nav>
+        </aside>
+
+        <main class="main-wrapper">
+            <header class="top-header">
+                <div class="header-left">
+                    <h2>Fila de Triagem Inteligente (Scraper & SAD)</h2>
+                </div>
+                <div class="header-right" style="display: flex; align-items: center;">
+                    <div class="notification-container" onclick="toggleNotif()">
+                        <div class="notification-bell has-notification">🔔</div>
+                        <div class="notif-menu" id="notifMenu">
+                            <div class="notif-item"><strong>Nova Licitação:</strong> Pregão 112 encontrado!</div>
+                            <div class="notif-item"><strong>GED:</strong> Alvará vence em 4 dias.</div>
+                            <div class="notif-item"><strong>Financeiro:</strong> Pagamento aprovado.</div>
+                        </div>
+                    </div>
+                    <div class="user-profile"><span>Olá, Leila</span><div class="avatar">L</div></div>
+                </div>
+            </header>
+
+            <section class="container">
+                
+                <div class="card accent-azul">
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <div>
+                            <h3 class="card-title" style="margin-bottom: 4px;">Monitoramento Inteligente de Editais</h3>
+                            <p class="text-detail">Editais capturados nativamente via API do PNCP. O motor estatístico calcula a taxa de vitória com base no histórico de lances e concorrentes da região.</p>
+                        </div>
+                        <div class="crm-filter-group">
+                            <input type="text" class="search-bar" id="searchEditais" placeholder="Filtrar por objeto, órgão ou edital..." style="width: 250px;">
+                            <select class="select-filter" id="filterMatch">
+                                <option value="">Chances de Vitória</option>
+                                <option value="Alta">Alta (> 70%)</option>
+                                <option value="Média">Média (40% - 70%)</option>
+                                <option value="Baixa">Baixa (< 40%)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="card accent-azul">
+                        <h3 class="card-title">Varridos Hoje (PNCP)</h3>
+                        <h2>1.429 Editais</h2>
+                        <p class="text-detail">Filtro automático de palavras-chave ativo</p>
+                    </div>
+                    <div class="card accent-verde">
+                        <h3 class="card-title">Matches de Alta Probabilidade</h3>
+                        <h2>8 Oportunidades</h2>
+                        <p class="text-detail" style="color: var(--sucesso); font-weight: 600;">Win Rate preditivo acima de 75%</p>
+                    </div>
+                    <div class="card accent-dourado">
+                        <h3 class="card-title">Valor Sob Monitoramento</h3>
+                        <h2>R$ 2.480.000</h2>
+                        <p class="text-detail">Volume financeiro total elegível</p>
+                    </div>
+                </div>
+
+                <div class="card accent-dourado">
+                    <table class="table-base">
+                        <thead>
+                            <tr>
+                                <th>Edital / Origem</th>
+                                <th>Empresa Destino (Cliente)</th>
+                                <th>Objeto / Segmento</th>
+                                <th>Valor Estimado</th>
+                                <th style="width: 250px;">Cálculo de Win Rate (SAD)</th>
+                                <th>Ações Gerenciais</th>
+                            </tr>
+                        </thead>
+                        <tbody id="editaisTableBody">
+                            
+                            <tr data-match="Alta">
+                                <td>
+                                    <strong>Pregão 042/2026</strong><br>
+                                    <span class="text-detail">Portal: Licitações-E (BB)</span>
+                                </td>
+                                <td><strong>MedSupply Brasil</strong></td>
+                                <td>Kits de Monitoramento Glicêmico<br><span class="text-detail">Órgão: SES - SP</span></td>
+                                <td style="font-weight: 600;">R$ 450.000,00</td>
+                                <td>
+                                    <div class="win-rate-container">
+                                        <div class="progress-bar-bg">
+                                            <div class="progress-bar-fill rate-high" style="width: 92%;"></div>
+                                        </div>
+                                        <span class="rate-text" style="color: var(--sucesso);">92%</span>
+                                    </div>
+                                    <span class="ai-badge">🧠 Poucos concorrentes mapeados</span>
+                                </td>
+                                <td>
+                                    <button class="btn-novo" style="padding: 6px 12px; font-size: 12px;" onclick="vincularCRM(this, 'ED-042')">Vincular ao CRM ➔</button>
+                                </td>
+                            </tr>
+
+                            <tr data-match="Alta">
+                                <td>
+                                    <strong>Pregão 015/2026</strong><br>
+                                    <span class="text-detail">Portal: Comprasnet</span>
+                                </td>
+                                <td><strong>Hospitalar & Cia</strong></td>
+                                <td>Luvas de Procedimento Cirúrgico<br><span class="text-detail">Órgão: UPA Zona Leste</span></td>
+                                <td style="font-weight: 600;">R$ 250.000,00</td>
+                                <td>
+                                    <div class="win-rate-container">
+                                        <div class="progress-bar-bg">
+                                            <div class="progress-bar-fill rate-high" style="width: 78%;"></div>
+                                        </div>
+                                        <span class="rate-text" style="color: var(--sucesso);">78%</span>
+                                    </div>
+                                    <span class="ai-badge">🧠 Cliente possui histórico vencedor</span>
+                                </td>
+                                <td>
+                                    <button class="btn-novo" style="padding: 6px 12px; font-size: 12px;" onclick="vincularCRM(this, 'ED-015')">Vincular ao CRM ➔</button>
+                                </td>
+                            </tr>
+
+                            <tr data-match="Média">
+                                <td>
+                                    <strong>Pregão 089/2026</strong><br>
+                                    <span class="text-detail">Portal: Compras Públicas</span>
+                                </td>
+                                <td><strong>Distribuidora Norte</strong></td>
+                                <td>Lotes de Amoxicilina Suspensão<br><span class="text-detail">Órgão: Pref. Curitiba</span></td>
+                                <td style="font-weight: 600;">R$ 320.000,00</td>
+                                <td>
+                                    <div class="win-rate-container">
+                                        <div class="progress-bar-bg">
+                                            <div class="progress-bar-fill rate-medium" style="width: 54%;"></div>
+                                        </div>
+                                        <span class="rate-text" style="color: var(--alerta);">54%</span>
+                                    </div>
+                                    <span class="ai-badge" style="background-color: #FFF3E0; color: var(--alerta);">⚠️ Concorrente agressivo na região</span>
+                                </td>
+                                <td>
+                                    <button class="btn-novo" style="padding: 6px 12px; font-size: 12px;" onclick="vincularCRM(this, 'ED-089')">Vincular ao CRM ➔</button>
+                                </td>
+                            </tr>
+
+                            <tr data-match="Baixa">
+                                <td>
+                                    <strong>Pregão 210/2026</strong><br>
+                                    <span class="text-detail">Portal: Comprasnet</span>
+                                </td>
+                                <td><strong>TechMed Soluções</strong></td>
+                                <td>Equipamentos de Ultrassom complexos<br><span class="text-detail">Órgão: Hosp. das Clínicas</span></td>
+                                <td style="font-weight: 600;">R$ 1.050.000,00</td>
+                                <td>
+                                    <div class="win-rate-container">
+                                        <div class="progress-bar-bg">
+                                            <div class="progress-bar-fill rate-low" style="width: 14%;"></div>
+                                        </div>
+                                        <span class="rate-text" style="color: var(--erro);">14%</span>
+                                    </div>
+                                    <span class="ai-badge" style="background-color: #FFEBEE; color: var(--erro);">🚫 Exigência de balanço impeditiva</span>
+                                </td>
+                                <td>
+                                    <button class="btn-table" style="color: var(--erro); border-color: #FFCDD2;" onclick="descartarEdital(this)">Descartar Edital</button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+        </main>
+    </div>
+</body>
+</html>
